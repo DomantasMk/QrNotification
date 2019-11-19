@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import {View} from 'react-native'
+import {View, StyleSheet} from 'react-native'
 
 import NotificationSlider from '../components/NotificationSlider'
+import NotificationCard from '../components/NotificationCard'
 
 export default class HomeScreen extends Component {
     static navigationOptions = {
@@ -18,9 +19,15 @@ export default class HomeScreen extends Component {
 
     render() {
         return (
-            <View>
+            <View styles={styles.container}>
                 <NotificationSlider/>
+                <NotificationCard/>
             </View>
         )
     }
 }
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#ebebeb',
+  },
+});
