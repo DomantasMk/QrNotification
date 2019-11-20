@@ -6,7 +6,7 @@ export default class NotificationCard extends Component {
         return (
             <View style={styles.WholeCard}>
                 <View style={styles.Picture}></View>
-                <Text style={styles.inside}>ADSDJOIAJEGOIJSROGISEG</Text>
+                <Text style={styles.inside}></Text>
             </View>
         )
     }
@@ -14,19 +14,26 @@ export default class NotificationCard extends Component {
 const styles = StyleSheet.create({
     WholeCard: {
        margin:20,
-       padding:20,
-       paddingTop:40,
-       paddingBottom:40,
+       marginBottom:0,
+       padding:0,
+       paddingTop:0,
+       paddingBottom:0,
        backgroundColor:"white",
        elevation:10,
+       flexDirection: 'row',
     },
     Picture:{
-    
+    flex:1,
     backgroundColor:"gray",
-    padding:15,
+    margin:20,
+    padding:20,
+    paddingTop:35,
+    paddingBottom:35,
     },
     inside:{
-        flex:3,
+        flex:8,
+        alignSelf:'center',
+        marginRight:20,
     },
   });
   

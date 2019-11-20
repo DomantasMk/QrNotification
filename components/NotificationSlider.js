@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import {View, Text, StyleSheet} from 'react-native'
+import {View, Text, StyleSheet, Switch} from 'react-native'
 
 export default class NotificationSlider extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Slider for notifications is gonna be here</Text>
+                <Switch value={true} />
+                <Text>Let me know when a machine is available</Text>
             </View>
         )
     }
@@ -13,10 +14,8 @@ export default class NotificationSlider extends Component {
 
 const styles = StyleSheet.create({
     container: {
-      padding: 30,
-      flex: 1,
+      padding: 15,
+      flexDirection:'row',
       backgroundColor: '#d8d8d8',
-      alignItems: 'center',
-      justifyContent: 'center',
     },
   });
