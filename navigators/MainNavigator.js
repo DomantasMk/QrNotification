@@ -27,6 +27,7 @@ Timer:{screen:TimerScreen, navigationOptions:{
     activeColor: '#f0edf6',
     inactiveColor: '#3e2465',
     barStyle: { backgroundColor: '#00c45f' },
+    shifting:true,
   })
 
 const App = createAppContainer(BottomNavigator);
