@@ -2,6 +2,16 @@ import React, { Component } from 'react'
 import {View,Text,StyleSheet,Button} from 'react-native'
 
 export default class TimeScreen extends Component {
+    static navigationOptions = {
+        title: 'AO3 Laundry',
+        headerStyle: {
+          backgroundColor: '#00c45f',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      };
     constructor(props) {
         super(props)
         this.state = {

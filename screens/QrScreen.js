@@ -25,23 +25,27 @@ export default function QrScreen() {
       return <Text>Requesting for camera permission</Text>;
     }
     if (hasPermission === false) {
-      return <Text>No access to camera</Text>;
+      return <Text style={{alignSelf:'center'}}>No access to camera</Text>;
     }
   
     return (
       <View
-        style={{
-          flex: 1,
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          alignSelf:'center',
-        }}>
-        <BarCodeScanner
+        style={styles.container}>
+          
+          <BarCodeScanner
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned()}
           style={StyleSheet.absoluteFillObject}
         />
   
         {scanned && <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} />}
+          
       </View>
     );
 }
+const styles = StyleSheet.create({
+  container :{
+    flex:1,
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+});
