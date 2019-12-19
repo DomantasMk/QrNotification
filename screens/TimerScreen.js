@@ -15,30 +15,60 @@ export default class TimeScreen extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            Time:0,
-
+            TimeLeft:0,
          }
       }
     startTimer(){
-
+      var x = setInterval(() => {
+        
+        let arg = this.state.TimeLeft;
+        arg = arg - 1;
+        this.setState({TimeLeft: arg})
+        if (arg < 1) {
+          clearInterval(x);
+          this.setState({TimeLeft: 0})
+        }
+      }, 1000);
     }
     setTimer(time){
-        this.setState({Time:time});
+        this.setState({TimeLeft:time})
     }
     render() {
         return (
             <View style={styles.TimeView}>
+              <View>
                 <Text style={styles.TimeText}>
-                    Time: {this.state.Time}
+                    Time left: {Math.floor(this.state.TimeLeft / 60)} minutes {this.state.TimeLeft % 60} seconds
                 </Text>
-                <Button title="Start timer" onPress={() =>{this.setTimer(100)}}></Button>
+              </View>
+                <View style={{margin:5,}}>
+                 <Button title="Start timer" color="#00c45f" onPress={() =>{this.startTimer()}}></Button>
+                </View>
+
+                <View style ={styles.presetButtonRow}>
+                  <View style={{flex:1, margin:5,}}>
+                    <Button title="40 minutes" color="#00c45f" onPress={() =>{this.setTimer(2400)}}></Button>
+                  </View>
+                  <View style={{flex:1, margin:5,}}>
+                    <Button title=" 60 minutes" color="#00c45f" onPress={() =>{this.setTimer(10)}}></Button>
+                  </View>
+                </View>
+                <View style ={styles.presetButtonRow}>
+                  <View style={{flex:1, margin:5,}}>
+                    <Button title="80 minutes" color="#00c45f" onPress={() =>{this.setTimer(4800)}}></Button>
+                  </View>
+                  <View style={{flex:1, margin:5,}}>
+                    <Button title="120 minutes" color="#00c45f" onPress={() =>{this.setTimer(7200)}}></Button>
+                  </View>
+                </View>
+
             </View>
         )
     }
 }
 const styles = StyleSheet.create({
     TimeView: {
-      alignSelf:"center",
+      
       marginTop:"auto",
       marginBottom:"auto",
     },
@@ -46,6 +76,11 @@ const styles = StyleSheet.create({
         textAlign:"center",
         fontSize:20,
         marginBottom:10,
+    },
+    presetButtonRow:{
+      flexDirection:"row",
+      marginTop:5,
+      
     }
   });
   

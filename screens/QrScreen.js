@@ -22,15 +22,18 @@ export default function QrScreen() {
     };
   
     if (hasPermission === null) {
-      return <Text>Requesting for camera permission</Text>;
+      return <View style={styles.container}><View style={{justifyContent:'center'}}><Text style={{fontSize:30,}}>No access to camera</Text></View></View>;
     }
     if (hasPermission === false) {
-      return <Text style={{alignSelf:'center'}}>No access to camera</Text>;
+      return <View style={styles.container}><View style={{justifyContent:'center'}}><Text style={{fontSize:30,}}>No access to camera</Text></View></View>;
     }
   
     return (
-      <View
-        style={styles.container}>
+      <View style={{
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'flex-end',
+      }}>
           
           <BarCodeScanner
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned()}
@@ -45,7 +48,8 @@ export default function QrScreen() {
 const styles = StyleSheet.create({
   container :{
     flex:1,
-    flexDirection: 'column',
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent:'center',
   },
 });

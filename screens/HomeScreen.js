@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import {View, StyleSheet, ScrollView} from 'react-native'
+import {View, StyleSheet, ScrollView, Button} from 'react-native'
 
 import NotificationSlider from '../components/NotificationSlider'
 import NotificationCard from '../components/NotificationCard'
-
+import { Ionicons } from '@expo/vector-icons';
 import * as Permissions from 'expo-permissions';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 
 export default class HomeScreen extends Component {
     static navigationOptions = {
@@ -16,8 +17,13 @@ export default class HomeScreen extends Component {
         headerTitleStyle: {
           fontWeight: 'bold',
         },
+        headerRight: () => (
+          <TouchableHighlight onPress={() =>{console.log()}} style={{marginRight:20}}><Ionicons name="md-refresh" size={30} fontWeight={20} color={"white"} /></TouchableHighlight>
+        ),
       };
-  /*fetch("http://localhost:8000").then(response => {
+  /*\
+  data fetching
+  fetch("http://localhost:8000").then(response => {
     return response.json()
   })
   .then(data => {
@@ -32,7 +38,7 @@ export default class HomeScreen extends Component {
           Permissions.NOTIFICATIONS
         );
         if (status !== 'granted') {
-          alert('Hey! You heve not enabled selected permissions');
+          alert('You have not enabled camera permissions, so the QR screen will not work');
         }
       }
       checkMultiPermissions();
@@ -40,14 +46,15 @@ export default class HomeScreen extends Component {
             <View styles={styles.container}>
                 <NotificationSlider/>
                 <ScrollView>
-                <NotificationCard/>
-                <NotificationCard/>
-                <NotificationCard/>
-                <NotificationCard/>
-                <NotificationCard/>
-                <NotificationCard/>
-                <NotificationCard/>
-                <NotificationCard/>
+                <NotificationCard time="61"/>
+                <NotificationCard time="120"/>
+                <NotificationCard time="180"/>
+                <NotificationCard time="200"/>
+                <NotificationCard time="260"/>
+                <NotificationCard time="320"/>
+                <NotificationCard time="376"/>
+                <NotificationCard time="432"/>
+                <View style={{margin:25,}}></View>
                 </ScrollView>
 
             </View>

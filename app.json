@@ -27,6 +27,7 @@
       "supportsTablet": true
     },
     "android": {
+      "permissions":["CAMERA"],
       "package": "com.MkzInc.A03Laundry"
     }
   }
