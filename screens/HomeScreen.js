@@ -18,7 +18,7 @@ export default class HomeScreen extends Component {
           fontWeight: 'bold',
         },
         headerRight: () => (
-          <TouchableHighlight onPress={() =>{console.log()}} style={{marginRight:20}}><Ionicons name="md-refresh" size={30} fontWeight={20} color={"white"} /></TouchableHighlight>
+          <TouchableHighlight underlayColor="#00c45f" onPress={() =>{console.log()}} style={{marginRight:20}}><Ionicons name="md-refresh" size={30} fontWeight={20} color={"white"} /></TouchableHighlight>
         ),
       };
   /*\
@@ -50,10 +50,6 @@ export default class HomeScreen extends Component {
                 <NotificationCard time="120"/>
                 <NotificationCard time="180"/>
                 <NotificationCard time="200"/>
-                <NotificationCard time="260"/>
-                <NotificationCard time="320"/>
-                <NotificationCard time="376"/>
-                <NotificationCard time="432"/>
                 <View style={{margin:25,}}></View>
                 </ScrollView>
 
@@ -61,6 +57,11 @@ export default class HomeScreen extends Component {
         )
     }
 }
+/*                <NotificationCard time="260"/>
+                <NotificationCard time="320"/>
+                <NotificationCard time="376"/>
+                <NotificationCard time="432"/> 
+                */
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#ebebeb',

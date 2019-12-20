@@ -16,9 +16,9 @@ export default function QrScreen() {
       })();
     }, []);
   
-    const handleBarCodeScanned = ({ type, data }) => {
+    const handleBarCodeScanned = ({type, data}) => {
       setScanned(true);
-      alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+      alert(`Post to ${data} has been sent!`);
     };
   
     if (hasPermission === null) {
@@ -33,18 +33,19 @@ export default function QrScreen() {
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'flex-end',
+        backgroundColor:'black'
       }}>
+        <BarCodeScanner
+          onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+          style={{flex:1}}
+        /> 
           
-          <BarCodeScanner
-          onBarCodeScanned={scanned ? undefined : handleBarCodeScanned()}
-          style={StyleSheet.absoluteFillObject}
-        />
   
-        {scanned && <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} />}
-          
+        {scanned && <Button title={'Tap to Scan Again'} color="#00c45f" onPress={() => setScanned(false)} />}
       </View>
     );
 }
+/* */
 const styles = StyleSheet.create({
   container :{
     flex:1,

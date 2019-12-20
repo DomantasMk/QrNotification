@@ -16,22 +16,49 @@ export default class TimeScreen extends Component {
         super(props)
         this.state = {
             TimeLeft:0,
+            timer:0,
          }
       }
     startTimer(){
-      var x = setInterval(() => {
+      if(this.state.TimeLeft==0){
+        return
+      }
+      if(this.state.timer != 0){
+        clearInterval(this.state.timer);
+        this.setState({timer:0});
+      }
+      else{
+        this.setState({timer :setInterval(() => {
         
-        let arg = this.state.TimeLeft;
-        arg = arg - 1;
-        this.setState({TimeLeft: arg})
-        if (arg < 1) {
-          clearInterval(x);
-          this.setState({TimeLeft: 0})
-        }
-      }, 1000);
+          let arg = this.state.TimeLeft;
+          arg = arg - 1;
+          this.setState({TimeLeft: arg})
+          if (arg < 1) {
+            clearInterval(this.state.timer);
+            this.setState({timer: 0})
+            this.setState({TimeLeft: 0})
+            this.forceUpdate();
+          }
+        }, 1000)});
+      }
+      
     }
     setTimer(time){
-        this.setState({TimeLeft:time})
+        if(time == 0){
+            this.setState({timer: 0})
+            this.setState({TimeLeft: 0})
+            this.forceUpdate();
+        }
+        else{
+          this.setState({TimeLeft:this.state.TimeLeft + time})
+        }
+
+    }
+    returnTimerLabel(){
+      if(this.state.timer == 0){
+        return "Start timer"
+      }
+      else{return "Stop timer"}
     }
     render() {
         return (
@@ -42,7 +69,7 @@ export default class TimeScreen extends Component {
                 </Text>
               </View>
                 <View style={{margin:5,}}>
-                 <Button title="Start timer" color="#00c45f" onPress={() =>{this.startTimer()}}></Button>
+                 <Button title={this.returnTimerLabel()} color="#00c45f" onPress={() =>{this.startTimer()}}></Button>
                 </View>
 
                 <View style ={styles.presetButtonRow}>
@@ -50,17 +77,21 @@ export default class TimeScreen extends Component {
                     <Button title="40 minutes" color="#00c45f" onPress={() =>{this.setTimer(2400)}}></Button>
                   </View>
                   <View style={{flex:1, margin:5,}}>
-                    <Button title=" 60 minutes" color="#00c45f" onPress={() =>{this.setTimer(10)}}></Button>
+                    <Button title=" 1 hour" color="#00c45f" onPress={() =>{this.setTimer(10)}}></Button>
                   </View>
                 </View>
                 <View style ={styles.presetButtonRow}>
                   <View style={{flex:1, margin:5,}}>
-                    <Button title="80 minutes" color="#00c45f" onPress={() =>{this.setTimer(4800)}}></Button>
+                    <Button title="1 hour 20 minutes" color="#00c45f" onPress={() =>{this.setTimer(4800)}}></Button>
                   </View>
                   <View style={{flex:1, margin:5,}}>
-                    <Button title="120 minutes" color="#00c45f" onPress={() =>{this.setTimer(7200)}}></Button>
+                    <Button title="2 hours" color="#00c45f" onPress={() =>{this.setTimer(7200)}}></Button>
                   </View>
                 </View>
+                <View style={{margin:5,marginTop:10}}>
+                  <Button title="Clear Timer" color="#00c45f" onPress={() =>{this.setTimer(0)}}></Button>
+                </View>
+
 
             </View>
         )

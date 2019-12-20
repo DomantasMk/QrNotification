@@ -47,15 +47,15 @@ const styles = StyleSheet.create({
     backgroundColor:"gray",
     margin:20,
     padding:20,
-    paddingTop:25,
-    paddingBottom:25,
+    paddingTop:10,
+    paddingBottom:10,
     },
     inside:{
         flex:8,
         alignSelf:'center',
         marginRight:20,
-        margin:20,
-        padding:20,
+        margin:10,
+        padding:0,
 
     },
     insideText:{

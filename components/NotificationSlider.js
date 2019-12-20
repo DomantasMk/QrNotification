@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View, Text, StyleSheet, Button} from 'react-native'
+import {View, Text, StyleSheet, Button, TouchableHighlight} from 'react-native'
 import {Switch} from "react-native-paper"
 import { AsyncStorage } from 'react-native';
 
@@ -61,10 +61,12 @@ export default class NotificationSlider extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <Switch onValueChange={() =>{this.ChangeSwitchValue()}} value={this.state.SwitchState} color="#00c45f"/>
+            <TouchableHighlight onPress={() =>{this.ChangeSwitchValue()}}>
+              <View  style={styles.container}>
                 <Text>Let me know when a machine is available</Text>
-            </View>
+                <View style={{marginLeft:"auto"}}><Switch onValueChange={() =>{this.ChangeSwitchValue()}} value={this.state.SwitchState} color="#00c45f"/></View>
+              </View>
+            </TouchableHighlight>
         )
     }
 }
